@@ -1,11 +1,12 @@
 import React from 'react';
 import classes from '*.module.css';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, TextField } from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person';
+import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles({
     root: {
-        width: '90%',
+        width: '100%',
         paddingTop: 0,
         paddingBottom: 0,
         paddingLeft: '5%',
@@ -20,7 +21,11 @@ const useStyles = makeStyles({
         zIndex: 9999
     }, 
     logo: {
-        flexGrow: 1
+    },
+    searchContainer: {
+        flexGrow: 1,
+        display: 'flex',
+        justifyContent: 'center'
     }
 });
 
@@ -30,6 +35,9 @@ export const NavBar = () => {
     return (
         <div className={classes.root}>
             <h1 className={classes.logo}>Shope</h1>
+            <div className={classes.searchContainer}>
+                <input className="nav-search-input" type="text" placeholder="Search"></input>
+            </div>
             <PersonIcon />
 
         </div>

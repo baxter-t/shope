@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-import OutfitDisplay from './Post/OutfitDisplay';
-import { AppBar, Button, Container, Fade, IconButton, Toolbar } from '@material-ui/core';
+import {OutfitDisplay} from './Post/OutfitDisplay';
+import { AppBar, Backdrop, Button, Container, Fade, IconButton, Toolbar } from '@material-ui/core';
 import { PostThumbnail } from './Explore/PostThumbnail';
 import Masonry from 'react-masonry-component';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -115,9 +115,11 @@ const urls = [
 
 export default function App() {
   const [open, setOpen] = React.useState(false);
+  const [modalUrl, setModalUrl] = React.useState("");
   const classes = useStyles();
 
-  const handleOpen = () => {
+  const handleOpen = (url: string) => {
+    setModalUrl(url);
     setOpen(true);
   };
 
@@ -142,10 +144,6 @@ export default function App() {
 
       <div className={classes.content}>
         <Container>
-          <SearchForm />
-        </Container>
-
-        <Container>
           <Masonry className={classes.grid}>
             {
               renderThumbnails(urls)
@@ -158,9 +156,13 @@ export default function App() {
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
             closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500
+            }}
           >
             <Fade in={open}>
-              <OutfitDisplay />
+              <OutfitDisplay imgUrl={modalUrl}/>
             </Fade>
           </Modal>
         </Container>

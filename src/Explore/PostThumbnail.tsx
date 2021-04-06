@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 export type PostThumbnailProps = {
     postId: string;
     imageUrl: string;
-    onClick: () => void;
+    onClick: (url: string) => void;
 }
 
 const useStyles = makeStyles({
@@ -34,7 +34,7 @@ export const PostThumbnail = (props: PostThumbnailProps) => {
       }, []);
 
     return (
-        <div onClick={props.onClick} className={classes.root}>
+        <div onClick={() => props.onClick(props.imageUrl)} className={classes.root}>
             <img src={props.imageUrl} className={classes.img}/>
         </div>
     )

@@ -1,3 +1,10 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
 html, body {
   height: 100%;
   margin: 0;
@@ -16,4 +23,18 @@ body {
 ::-webkit-scrollbar {
   width: 0;
   background: transparent;
+}
+
+.nav-search-input {
+  height: 40px;
+  width: 20%;
+  text-align: center;
+  transition: 500ms;
+  border-radius: 10px;
+  border: 1px black solid;
+  font-size: medium;
+}
+
+.nav-search-input:focus {
+  width: 80%;
 }

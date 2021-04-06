@@ -7,6 +7,10 @@ import {LookInformation} from './LookInformation';
 import { ItemType, MeasurementType, SocialType } from '../shared/ResponseTypes';
 import { ModelInformation } from './ModelInformation';
 
+type OutfitDisplayProps = {
+    imgUrl: string;
+}
+
 const useStyles = makeStyles({
     root: {
         position: 'absolute',
@@ -22,7 +26,7 @@ const useStyles = makeStyles({
         paddingBottom: '40px'
     },
     img: {
-        maxWidth: '100%'
+        width: '100%'
     },
     closeButton: {
         fontSize: 30,
@@ -93,7 +97,7 @@ const apiResponse = {
     ]
 }
 
-export default function OutfitDisplay() {
+export const OutfitDisplay = (props: OutfitDisplayProps) => {
     const classes = useStyles();
 
     return (
@@ -101,7 +105,7 @@ export default function OutfitDisplay() {
             <Grid container>
                 <Button className={classes.closeButton}><FaTimes /></Button>
                 <Grid item xs={12}>
-                    <img className={classes.img} src={apiResponse.imgUrl} />
+                    <img className={classes.img} src={props.imgUrl} />
                 </Grid>
 
                 <Grid item xs={12}>
