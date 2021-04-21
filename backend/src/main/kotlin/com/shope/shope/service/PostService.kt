@@ -1,17 +1,21 @@
 package com.shope.shope.service
 
-import com.shope.shope.db.GraphDBManager
+import com.shope.shope.dao.PostDao
 import com.shope.shope.model.Post
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class PostService (val db: GraphDBManager){
+class PostService {
+	@Autowired
+	protected lateinit var postDao: PostDao
+
 	fun getPosts(): List<Post> {
 	    return listOf(
-			Post("1", "test1"),
-			Post("2", "test2"),
-			Post("3", "test3"),
-			Post("4", "test4")
+			Post("test1"),
+			Post("test2"),
+			Post("test3"),
+			Post("test4")
 	    )
 	}
 
@@ -19,7 +23,7 @@ class PostService (val db: GraphDBManager){
 		TODO()
 	}
 
-	fun test(): String {
-		return db.test("test 1")
+	fun create(post: Post) {
+	    postDao.create(post)
 	}
 }

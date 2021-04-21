@@ -1,4 +1,4 @@
 package com.shope.shope.model
 
-open class Post(val id: String = "xxx", val username: String="default") {
+open class Post(val id: String, val username: String="default") {
 }
